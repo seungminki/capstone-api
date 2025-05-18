@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pymysql
+boto3
+chromadb
+pydantic
+transformers
+torch
+mysql-connector-python
+sentence_transformers
+pandas
