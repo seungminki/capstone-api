@@ -8,7 +8,7 @@ import torch
 router = APIRouter(prefix="/hatespeech", tags=["hatespeech"])
 
 
-@router.get("/")
+@router.get("")
 def get_negative_score(req: RequestData):
     return predict(text=req.content)
 
