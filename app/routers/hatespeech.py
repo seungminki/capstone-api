@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from app.schemas import PostRequest, RequestData
+from app.schemas import RequestData
+from utils.mysql_util import insert_post
 from settings import TRAINED_MODEL_PATH
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -8,8 +9,9 @@ import torch
 router = APIRouter(prefix="/hatespeech", tags=["hatespeech"])
 
 
-@router.get("")
+@router.post("")
 def get_negative_score(req: RequestData):
+    insert_post(req)
     return predict(text=req.content)
 
 
