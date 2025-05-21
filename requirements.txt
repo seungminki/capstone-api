@@ -10,3 +10,4 @@ pydantic
 mysql-connector-python
 # sentence_transformers
 pandas
+openai
