@@ -1,7 +1,8 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, BackgroundTasks
-from app.routers import hatespeech
+from app.routers import classify, filter
 from utils.s3_util import download_folder_from_s3
+from settings import TRAINED_MODEL_PATH
 
 description = """
 CAPSTONE-2025 API helps you do awesome stuff. 🚀
@@ -17,7 +18,7 @@ def start():
     def load_model():
         download_folder_from_s3(
             s3_prefix="hate-speech/250518/model",  # s3://my-ml-models/checkpoints/
-            local_dir="./hate-speech-model",  # 로컬 저장 위치
+            local_dir=TRAINED_MODEL_PATH,  # 로컬 저장 위치
         )
 
     print("Service is starting....")
@@ -58,4 +59,5 @@ async def ping():
     return {"message": "pong"}
 
 
-app.include_router(hatespeech.router)
+app.include_router(filter.router)
+app.include_router(classify.router)
