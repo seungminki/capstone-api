@@ -8,6 +8,6 @@ pydantic
 # transformers
 # torch
 mysql-connector-python
-# sentence_transformers
+sentence_transformers
 pandas
 openai
