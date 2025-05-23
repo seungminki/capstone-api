@@ -58,6 +58,36 @@ def insert_categories(req: RequestData, pred_category: str):
         conn.close()
 
 
+def insert_docs(req: RequestData, rows: list):
+    query = """
+    INSERT INTO docs (post_id, board_id, pred_id, pred_post_id, pred_board_id, cosine_distance)
+    VALUES (%(post_id)s, %(board_id)s, %(pred_id)s, %(pred_post_id)s, %(pred_board_id)s, %(cosine_distance)s)
+    """
+    conn = get_connection()
+    cursor = conn.cursor(prepared=True)
+
+    try:
+        rows = [
+            {**row, "post_id": req.post_id, "board_id": req.board_id} for row in rows
+        ]
+
+        # bulk insert
+        cursor.executemany(
+            query,
+            rows,
+        )
+
+        conn.commit()
+        print("✅ Insert 성공")
+
+    except Exception as e:
+        conn.rollback()
+        print("❌ 오류 발생, 롤백 수행:", e)
+
+    finally:
+        conn.close()
+
+
 def create_insert_query():
     return """
     INSERT INTO posts (post_id, board_id, content, user_id)

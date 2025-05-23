@@ -49,10 +49,10 @@ def postprocess(result):
 
     rows = [
         {
-            "id": id_,
-            "post_id": meta["post_id"],
-            "board_id": meta["board_id"],
-            "document": doc,
+            "pred_id": id_,
+            "pred_post_id": meta["post_id"],
+            "pred_board_id": meta["board_id"],
+            "pred_document": doc,
             "cosine_distance": dist,
             # "similarity": round(1 - dist, 6),
             # cosine은 1-dist가 맞는데 euclidean은 애매함
