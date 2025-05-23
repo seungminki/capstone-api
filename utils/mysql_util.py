@@ -2,7 +2,7 @@ import mysql.connector
 
 from app.schemas import RequestData
 
-from settings import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD
+from settings import MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE
 
 
 def insert_posts(req: RequestData):
@@ -71,5 +71,5 @@ def get_connection():
         port=MYSQL_PORT,
         user=MYSQL_USER,
         password=MYSQL_PASSWORD,
-        database="smki_capstone_db",
+        database=MYSQL_DATABASE,
     )

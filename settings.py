@@ -13,6 +13,7 @@ MYSQL_HOST = "mysql-db"  # container name
 MYSQL_PORT = 3306
 MYSQL_USER = os.getenv("mysql_user")
 MYSQL_PASSWORD = os.getenv("mysql_password")
+MYSQL_DATABASE = "smki_capstone_db"
 
 OPENAI_TOKEN = os.getenv("openai_token")
 
