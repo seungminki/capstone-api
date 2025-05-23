@@ -6,6 +6,7 @@ WORKDIR /workspace
 
 COPY ./requirements.txt /workspace
 
+RUN pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
 RUN pip install -r requirements.txt
 
 COPY . /workspace
