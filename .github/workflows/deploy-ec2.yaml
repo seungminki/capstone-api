@@ -82,4 +82,5 @@ jobs:
             docker stop ${{ env.API_SERVER_NAME }} || true
             docker rm ${{ env.API_SERVER_NAME }} || true
             docker run -d --env-file .env -p ${{ env.API_SERVER_PORT }}:80 \
-              --name ${{ env.API_SERVER_NAME }} -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ steps.vars.outputs.short_sha }}
+              --name ${{ env.API_SERVER_NAME }} -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ steps.vars.outputs.short_sha }} \
+              && echo "Docker Container running Succeed"

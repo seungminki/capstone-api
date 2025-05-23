@@ -2,7 +2,7 @@ import boto3
 import time
 import os
 
-from settings import AWS_S3_BUCKET_NAME, AWS_S3_KEY_ID, AWS_S3_SECRET_KEY
+from settings import AWS_S3_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 
 def download_file_from_s3(local_dir, local_filename, s3_key):
@@ -15,8 +15,8 @@ def download_file_from_s3(local_dir, local_filename, s3_key):
 
     s3 = boto3.client(
         "s3",
-        aws_access_key_id=AWS_S3_KEY_ID,
-        aws_secret_access_key=AWS_S3_SECRET_KEY,
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
         region_name="ap-northeast-2",
     )
 
@@ -35,8 +35,8 @@ def download_folder_from_s3(s3_prefix, local_dir):
 
     s3 = boto3.client(
         "s3",
-        aws_access_key_id=AWS_S3_KEY_ID,
-        aws_secret_access_key=AWS_S3_SECRET_KEY,
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
         region_name="ap-northeast-2",
     )
 
