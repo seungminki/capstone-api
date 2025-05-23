@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, BackgroundTasks
-from app.routers import classify, filter
+from app.routers import classify, filter, similar
 from utils.s3_util import download_folder_from_s3
 from settings import TRAINED_MODEL_PATH
 
@@ -61,3 +61,4 @@ async def ping():
 
 app.include_router(filter.router)
 app.include_router(classify.router)
+app.include_router(similar.router)
