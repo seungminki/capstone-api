@@ -8,7 +8,8 @@ AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 AWS_S3_BUCKET_NAME = os.getenv("AWS_S3_BUCKET_NAME")
 
-TRAINED_MODEL_PATH = "./filter-model"
+FT_TRAINED_MODEL_PATH = "./filter-model"
+CLF_TRAINED_MODEL_PATH = "./classify-model"
 
 MYSQL_HOST = "mysql-db"  # container name
 MYSQL_PORT = 3306
