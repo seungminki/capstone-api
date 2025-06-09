@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from app.schemas import RequestData
 from utils.mysql_util import insert_posts
+from utils.preprocess import preprocess
 from settings import FT_TRAINED_MODEL_PATH
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -16,8 +17,10 @@ def get_negative_score(req: RequestData):
 
 
 def predict(text: str):
-    model = AutoModelForSequenceClassification.from_pretrained(TRAINED_MODEL_PATH)
-    tokenizer = AutoTokenizer.from_pretrained(TRAINED_MODEL_PATH)
+    text = preprocess(text)
+
+    model = AutoModelForSequenceClassification.from_pretrained(FT_TRAINED_MODEL_PATH)
+    tokenizer = AutoTokenizer.from_pretrained(FT_TRAINED_MODEL_PATH)
 
     inputs = tokenizer(
         text, return_tensors="pt", truncation=True, padding=True, max_length=128

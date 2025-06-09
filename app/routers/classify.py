@@ -4,6 +4,7 @@ from transformers import BertTokenizer
 from utils.mysql_util import insert_posts, insert_categories
 from utils.openai_util import openai_api
 from utils.bert_util import BertForMultiLabelClassification, MultiLabelPredictor
+from utils.preprocess import preprocess
 from app.schemas import RequestData
 from settings import CLF_TRAINED_MODEL_PATH
 
@@ -28,6 +29,7 @@ def get_tagging_list(req: RequestData):
 
 
 def predict(text: str) -> list:
+    text = preprocess(text)
 
     model = BertForMultiLabelClassification.from_pretrained(CLF_TRAINED_MODEL_PATH)
     tokenizer = BertTokenizer.from_pretrained(CLF_TRAINED_MODEL_PATH)
