@@ -18,4 +18,4 @@ def get_similarity(req: RequestData):
 
     insert_docs(req, rows)
 
-    return {"content": req.content, "rows": rows}
+    return {"content": text, "rows": rows}

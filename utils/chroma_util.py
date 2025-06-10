@@ -17,8 +17,6 @@ def search_similar(query_sentence):
         ],
     )
 
-    postprocess(result)
-
     return postprocess(result)
 
 
@@ -46,6 +44,7 @@ def postprocess(result):
 
     # for id_, document, distance in zip(ids, documents, distances):
     #     print(f"ID: {id_}, Document: {document}, Similarity: {1 - distance}")
+    threshold = 0.40
 
     rows = [
         {
@@ -58,6 +57,7 @@ def postprocess(result):
             # cosine은 1-dist가 맞는데 euclidean은 애매함
         }
         for id_, meta, doc, dist in zip(ids, metadatas, documents, distances)
+        if dist <= threshold
     ]
 
     return rows
