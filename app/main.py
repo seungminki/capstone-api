@@ -5,12 +5,7 @@ from utils.s3_util import download_folder_from_s3
 from settings import FT_TRAINED_MODEL_PATH, CLF_TRAINED_MODEL_PATH
 
 description = """
-CAPSTONE-2025 API helps you do awesome stuff. 🚀
-
-1. content-similarity: similarity
-2. hate-speech-detection: filter
-3. topic-classification: classification
-
+CAPSTONE-API helps you do awesome stuff. 🚀
 """
 
 
