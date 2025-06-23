@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from app.schemas import RequestData
 from utils.mysql_util import insert_posts
-from utils.preprocess import preprocess
+from app.preprocess import preprocess
 from settings import FT_TRAINED_MODEL_PATH
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
